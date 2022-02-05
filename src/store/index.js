@@ -49,7 +49,7 @@ export default new Vuex.Store({
   },
   mutations: {
     pickChar(state, char) {
-      state.char = char;
+      state.character = char;
     },
     updateUiState(state, uiState) {
       state.uiState = uiState;
