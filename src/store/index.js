@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     uiState: "start",
     characterChoices: ["baker", "mechanic", "artist"],
-    character: '',
+    character: "",
     questions: [
       {
         question: `What's your dog's name?`,
@@ -47,7 +47,14 @@ export default new Vuex.Store({
       },
     ],
   },
-  mutations: {},
+  mutations: {
+    pickChar(state, char) {
+      state.char = char;
+    },
+    updateUiState(state, uiState) {
+      state.uiState = uiState;
+    },
+  },
   actions: {},
   modules: {},
 });

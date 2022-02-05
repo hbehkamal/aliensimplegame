@@ -16,6 +16,8 @@
         />
         <label :for="option">{{ option }}</label>
       </p>
+
+      <button @click="pickChar">Pick</button>
     </GamestateStart>
 
     <section v-else>
@@ -97,6 +99,12 @@ export default {
   },
   computed: {
     ...mapState(["uiState", "questions", "characterChoices", "character"]),
+  },
+  methods: {
+    pickChar() {
+      this.$store.commit("pickChar", this.characterinput);
+      this.$store.commit("updateUiState", "charChosen");
+    },
   },
 };
 </script>
