@@ -85,6 +85,17 @@
           />
         </g>
       </svg>
+
+      <div class="friendtalk">
+        <h3>{{ questions[questionIndex].question }}</h3>
+      </div>
+      <div class="zombietalk">
+        <p v-for="char in characterChoices" :key="char">
+          <button @click="pickQuestion(char)">
+            {{ questions[questionIndex][char] }}
+          </button>
+        </p>
+      </div>
     </section>
   </div>
 </template>
@@ -115,12 +126,22 @@ export default {
     };
   },
   computed: {
-    ...mapState(["uiState", "questions", "characterChoices", "character"]),
+    ...mapState([
+      "uiState",
+      "questions",
+      "characterChoices",
+      "character",
+      "questionIndex",
+      "score",
+    ]),
   },
   methods: {
     pickChar() {
       this.$store.commit("pickChar", this.characterinput);
       this.$store.commit("updateUiState", "charChosen");
+    },
+    pickQuestion(char) {
+      this.$store.commit("pickQuestion", char);
     },
   },
 };
